@@ -83,6 +83,7 @@ public class CalendarDialog extends Dialog implements View.OnClickListener {
     }
 
     private void initGridView() {
+        //获取哪年被选中了
         int selYear = yearList.get(selectPos);
         adapter = new CalendarAdapter(getContext(), selYear);
         if (selectMonth == -1) {

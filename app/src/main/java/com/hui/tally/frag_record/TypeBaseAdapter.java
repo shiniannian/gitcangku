@@ -33,7 +33,7 @@ public class TypeBaseAdapter extends BaseAdapter {
     public long getItemId(int position) {
         return position;
     }
-// 此适配器不考虑复用问题，因为所有的item都显示在界面上，不会因为滑动就消失，所有没有剩余的convertView，所以不用复写
+// 此适配器不考虑复用问题，因为所有的item都显示在界面上，不会因为滑动就消失，所以没有剩余的convertView，所以不用复写
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.item_recordfrag_gv,parent,false);

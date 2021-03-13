@@ -43,11 +43,14 @@ public class MonthChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_month_chart);
         initView();
         initTime();
+
+        // 统计某年某月的收支情况数据
         initStatistics(year,month);
         initFrag();
         setVPSelectListener();
     }
 
+    //页面滑动引起按钮改变
     private void setVPSelectListener() {
         chartVp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener(){
             @Override

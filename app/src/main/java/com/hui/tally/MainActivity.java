@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ListView todayLv;  //展示今日收支情况的ListView
     ImageView searchIv;
     Button editBtn;
+    Button messageBtn;
+    Button testBtn;
+    Button scrollingBtn;
+    Button wangluoqingqiuBtn;
+    Button musicBtn;
     ImageButton moreBtn;
     //声明数据源
     List<AccountBean>mDatas;
@@ -47,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initTime();
         initView();
         preferences = getSharedPreferences("budget", Context.MODE_PRIVATE);
@@ -61,10 +67,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         todayLv = findViewById(R.id.main_lv);
         editBtn = findViewById(R.id.main_btn_edit);
+        messageBtn = findViewById(R.id.main_btn_message);
+        testBtn = findViewById(R.id.main_btn_test);
         moreBtn = findViewById(R.id.main_btn_more);
+        scrollingBtn = findViewById(R.id.main_btn_scrolling);
+        wangluoqingqiuBtn = findViewById(R.id.main_btn_wangluoqingqiu);
+        musicBtn = findViewById(R.id.main_btn_music);
         searchIv = findViewById(R.id.main_iv_search);
         editBtn.setOnClickListener(this);
+        messageBtn.setOnClickListener(this);
+        testBtn.setOnClickListener(this);
         moreBtn.setOnClickListener(this);
+        scrollingBtn.setOnClickListener(this);
+        wangluoqingqiuBtn.setOnClickListener(this);
+        musicBtn.setOnClickListener(this);
         searchIv.setOnClickListener(this);
         setLVLongClickListener();       //设置长按事件（自定义的）
     }
@@ -94,8 +110,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int click_id = clickBean.getId();
-                        //执行删除的操作
+                        //执行删除的操作（删除数据库里的）
                         DBManager.deleteItemFromAccounttbById(click_id);
+
                         mDatas.remove(clickBean);   //实时刷新，移除集合当中的对象
                         adapter.notifyDataSetChanged();   //提示适配器更新数据
                         setTopTvShow();   //改变头布局TextView显示的内容
@@ -184,6 +201,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent it1 = new Intent(this, RecordActivity.class);  //跳转界面
                 startActivity(it1);
                 break;
+            case R.id.main_btn_message:
+                Intent it2 = new Intent(this, MessageActivity.class);  //跳转界面
+                startActivity(it2);
+                break;
             case R.id.main_btn_more:
                 MoreDialog moreDialog = new MoreDialog(this);
                 moreDialog.show();
@@ -195,6 +216,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.item_mainlv_top_iv_hide:
                 // 切换TextView明文和密文
                 toggleShow();
+                break;
+            case R.id.main_btn_test:
+                Intent it3 = new Intent(this, TestActivity.class);  //跳转界面
+                startActivity(it3);
+                break;
+            case R.id.main_btn_scrolling:
+                Intent it4 = new Intent(this, ScrollingActivity.class);  //跳转界面
+                startActivity(it4);
+                break;
+            case R.id.main_btn_wangluoqingqiu:
+                Intent it5 = new Intent(this, WangluoqingqiuActivity.class);  //跳转界面
+                startActivity(it5);
+                break;
+            case R.id.main_btn_music:
+                Intent it6 = new Intent(this, MusicActivity.class);  //跳转界面
+                startActivity(it6);
                 break;
         }
         if (v == headerView) {

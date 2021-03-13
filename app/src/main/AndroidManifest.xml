@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hui.tally">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".UniteApp"
         android:allowBackup="true"
@@ -10,7 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MonthChartActivity"></activity>
+        <activity android:name=".MusicActivity"></activity>
+        <activity android:name=".WangluoqingqiuActivity" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TestActivity" />
+        <activity android:name=".MessageActivity" />
+        <activity android:name=".MonthChartActivity" />
         <activity android:name=".SettingActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".AboutActivity" />

@@ -86,7 +86,7 @@ abstract public class BaseChartFragment extends Fragment {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {       //（x轴上只有三个值 1号 15号 和 31号）
                 int val = (int) value;
-                if (val == 0) {
+                if (val == 0) {     //val代表位置
                     return month+"-1";
                 }
                 if (val==14) {

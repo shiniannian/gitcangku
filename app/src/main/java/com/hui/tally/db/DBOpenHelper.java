@@ -21,6 +21,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 //        创建表示类型的表
         String sql = "create table typetb(id integer primary key autoincrement,typename varchar(10),imageId integer,sImageId integer,kind integer)";
         db.execSQL(sql);
+        //插入数据（具体实现在下面）
         insertType(db);
         //创建记账表
         sql = "create table accounttb(id integer primary key autoincrement,typename varchar(10),sImageId integer,beizhu varchar(80),money float," +

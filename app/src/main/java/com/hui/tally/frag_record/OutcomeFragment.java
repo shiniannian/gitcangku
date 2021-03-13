@@ -15,8 +15,9 @@ public class OutcomeFragment extends BaseRecordFragment {
     public void loadDataToGV() {
         super.loadDataToGV();
         //获取数据库当中的数据源
-        List<TypeBean> outlist = DBManager.getTypeList(0);
+        List<TypeBean> outlist = DBManager.getTypeList(0);  //支出是0，收入是1
         typeList.addAll(outlist);
+        //提示adapter更新
         adapter.notifyDataSetChanged();
         typeTv.setText("其他");
         typeIv.setImageResource(R.mipmap.ic_qita_fs);

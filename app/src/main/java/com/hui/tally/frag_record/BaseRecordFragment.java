@@ -48,6 +48,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         accountBean = new AccountBean();   //创建对象
+        //默认选择在其他选项
         accountBean.setTypename("其他");
         accountBean.setsImageId(R.mipmap.ic_qita_fs);
     }
@@ -92,6 +93,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
                 String typename = typeBean.getTypename();
                 typeTv.setText(typename);
                 accountBean.setTypename(typename);
+
                 int simageId = typeBean.getSimageId();
                 typeIv.setImageResource(simageId);
                 accountBean.setsImageId(simageId);
@@ -99,9 +101,10 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         });
     }
 
-    /* 给GridView填出数据的方法*/
+    /* 给GridView填充数据的方法*/
     public void loadDataToGV() {
         typeList = new ArrayList<>();
+        //设置适配器
         adapter = new TypeBaseAdapter(getContext(), typeList);
         typeGv.setAdapter(adapter);
     }
@@ -116,16 +119,18 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
         timeTv = view.findViewById(R.id.frag_record_tv_time);
         beizhuTv.setOnClickListener(this);
         timeTv.setOnClickListener(this);
+
         //让自定义软键盘显示出来
         KeyBoardUtils boardUtils = new KeyBoardUtils(keyboardView, moneyEt);
         boardUtils.showKeyboard();
+
         //设置接口，监听确定按钮按钮被点击了
         boardUtils.setOnEnsureListener(new KeyBoardUtils.OnEnsureListener() {
             @Override
             public void onEnsure() {
                 //获取输入钱数
                 String moneyStr = moneyEt.getText().toString();
-                if (TextUtils.isEmpty(moneyStr)||moneyStr.equals("0")) {
+                if (TextUtils.isEmpty(moneyStr)||moneyStr.equals("0")) {    //如果钱数为空或者为0
                     getActivity().finish();
                     return;
                 }
